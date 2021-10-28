@@ -1,10 +1,10 @@
-import axios from 'axios';
-
+import axios, { Axios } from 'axios';
+axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001';
 //------------------------GETS------------------------------------------------
 
 export function getLastestMovies(){
     return async function(dispatch){
-        let response = await axios.get('http://localhost:3001/movies/lastest', {responseType:'json'});
+        let response = await axios.get('/movies/lastest', {responseType:'json'});
         return dispatch({
             type: 'GET_LASTEST_MOVIES',
             payload: response.data
@@ -14,7 +14,7 @@ export function getLastestMovies(){
 
 export function getDetail(id){
     return async function(dispatch){
-        let response = await axios.get(`http://localhost:3001/movie/${id}`, {responseType:'json'});
+        let response = await axios.get(`/movie/${id}`, {responseType:'json'});
         console.log(response)
         return dispatch({
             type: 'GET_MOVIE_BY_ID',
@@ -25,7 +25,7 @@ export function getDetail(id){
 
 export function getPopular(){
     return async function(dispatch){
-        let response = await axios.get(`http://localhost:3001/movies/popular`, {responseType:'json'});
+        let response = await axios.get(`/movies/popular`, {responseType:'json'});
         console.log(response)
         return dispatch({
             type: 'GET_POPULAR_MOVIES',
@@ -36,7 +36,7 @@ export function getPopular(){
 
 export function getTopRated(){
     return async function(dispatch){
-        let response = await axios.get(`http://localhost:3001/movies/top-rated`, {responseType:'json'});
+        let response = await axios.get(`/movies/top-rated`, {responseType:'json'});
         console.log(response)
         return dispatch({
             type: 'GET_TOP_RATED',
@@ -47,7 +47,7 @@ export function getTopRated(){
 
 export function getMoviesByName(name){
     return async function(dispatch){
-        let response = await axios.get(`http://localhost:3001/movies?name=${name}`, {responseType:'json'});
+        let response = await axios.get(`/movies?name=${name}`, {responseType:'json'});
         console.log(response)
         return dispatch({
             type: 'GET_MOVIES_BY_NAME',
