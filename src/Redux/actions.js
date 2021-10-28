@@ -16,7 +16,7 @@ export function getLastestMovies(){
 
 export function getDetail(id){
     return async function(dispatch){
-        let response = await axios.get(`/movie/${id}`, {responseType:'json'});
+        let response = await axios.get(`/movies/${id}`, {responseType:'json'});
         console.log(response)
         return dispatch({
             type: 'GET_MOVIE_BY_ID',
